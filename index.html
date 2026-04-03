@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Come Home to Arbor | Arbor Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --green:        #7CC142;
+    --green-dark:   #3d6420;
+    --green-xdark:  #0f1a08;
+    --green-light:  #d4edba;
+    --green-tint:   #f0f9e8;
+    --uam-blue:     #2a3f7e;
+    --uam-blue-lt:  #e8ecf8;
+    --white:        #ffffff;
+    --off-white:    #f4f6f2;
+    --grey-light:   #f0f2ef;
+    --grey-mid:     #d0d5cc;
+    --grey-text:    #5a6352;
+    --dark-text:    #1a2312;
+    --red:          #c0392b;
+    --red-light:    #fdecea;
+    --shadow-sm:    0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md:    0 4px 20px rgba(0,0,0,0.12);
+    --shadow-lg:    0 8px 40px rgba(0,0,0,0.18);
+    --radius:       12px;
+    --radius-sm:    8px;
+    --transition:   0.25s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── UTILITY ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 80px 0; }
+  .section-sm { padding: 48px 0; }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(124,193,66,0.15);
+    color: var(--green);
+    border: 1px solid rgba(124,193,66,0.4);
+    border-radius: 999px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+  }
+  .tag-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%;
+    animation: pulse-dot 2s infinite; }
+  @keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.5); opacity: 0.6; }
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Barlow Condensed', sans-serif; line-height: 1.1; }
+  h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; }
+  h3 { font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 700; }
+
+  p { line-height: 1.7; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition);
+  }
+  .btn-green {
+    background: var(--green);
+    color: var(--white);
+    border-color: var(--green);
+  }
+  .btn-green:hover { background: var(--green-dark); border-color: var(--green-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-outline-white {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.5);
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--white); transform: translateY(-2px); }
+  .btn-white {
+    background: var(--white);
+    color: var(--green-dark);
+    border-color: var(--white);
+  }
+  .btn-white:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-outline-green-on-green {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.6);
+  }
+  .btn-outline-green-on-green:hover { background: rgba(255,255,255,0.15); border-color: var(--white); transform: translateY(-2px); }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,26,8,0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(124,193,66,0.2);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 60px;
+    gap: 16px;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .nav-logo-text span { color: var(--green); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--green); background: rgba(124,193,66,0.08); }
+  .nav-cta { flex-shrink: 0; }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+  }
+
+  /* ── TREE SVG LOGO ── */
+  .tree-logo {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    background: var(--green-xdark);
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(124,193,66,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge { margin-bottom: 28px; }
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .hero-headline .green-line { color: var(--green); display: block; }
+  .hero-subhead {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.72);
+    max-width: 620px;
+    margin: 24px 0 40px;
+    line-height: 1.65;
+  }
+  .hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 64px; }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .hero-stat {
+    padding: 24px 20px;
+    background: rgba(0,0,0,0.25);
+    text-align: center;
+  }
+  .hero-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+    display: block;
+    line-height: 1.3;
+  }
+  @media (max-width: 600px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── TRUTH BANNER ── */
+  #truth-banner {
+    background: var(--green);
+    padding: 20px 0;
+  }
+  .truth-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 32px;
+  }
+  .truth-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green-xdark);
+  }
+  .truth-check {
+    width: 18px;
+    height: 18px;
+    background: var(--green-xdark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .truth-check svg { width: 10px; height: 10px; }
+
+  /* ── TRANSPARENCY ── */
+  #transparency { background: var(--white); }
+  .transparency-headline { text-align: center; margin-bottom: 56px; }
+  .transparency-headline h2 { margin-bottom: 16px; }
+  .transparency-headline p { color: var(--grey-text); max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+
+  .compare-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 680px) { .compare-cards { grid-template-columns: 1fr; } }
+
+  .compare-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--grey-mid);
+  }
+  .compare-card-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .compare-card-header.arbor { background: var(--green-tint); border-bottom: 2px solid var(--green); }
+  .compare-card-header.uam   { background: var(--uam-blue-lt); border-bottom: 2px solid var(--uam-blue); }
+  .compare-card-logo-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+  }
+  .compare-card-header.arbor .compare-card-logo-label { color: var(--green-dark); }
+  .compare-card-header.uam   .compare-card-logo-label { color: var(--uam-blue); }
+  .compare-card-sub {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--grey-text);
+    display: block;
+  }
+  .compare-rows { padding: 8px 0; }
+  .compare-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--grey-light);
+    gap: 12px;
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row-label { font-size: 0.9rem; color: var(--grey-text); }
+  .badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .badge-green { background: var(--green-tint); color: var(--green-dark); border: 1px solid rgba(124,193,66,0.35); }
+  .badge-red   { background: var(--red-light); color: var(--red); border: 1px solid rgba(192,57,43,0.2); }
+  .badge-grey  { background: var(--grey-light); color: var(--grey-text); border: 1px solid var(--grey-mid); }
+
+  /* holdback table */
+  .hb-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 32px;
+    border: 1px solid var(--grey-mid);
+  }
+  .hb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .hb-table thead tr {
+    background: var(--dark-text);
+    color: var(--white);
+  }
+  .hb-table thead th {
+    padding: 14px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .hb-table tbody tr { border-bottom: 1px solid var(--grey-light); transition: background var(--transition); }
+  .hb-table tbody tr:last-child { border-bottom: none; }
+  .hb-table tbody tr:hover { background: var(--green-tint); }
+  .hb-table td { padding: 14px 16px; vertical-align: middle; }
+  .hb-table .adv-cell {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--green-dark);
+  }
+  .hb-table .arbor-cell { color: var(--green-dark); font-weight: 600; }
+  .hb-table .uam-cell   { color: var(--uam-blue); }
+
+  .info-box {
+    background: var(--green-tint);
+    border: 1px solid rgba(124,193,66,0.4);
+    border-left: 4px solid var(--green);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    font-size: 0.95rem;
+    color: var(--green-dark);
+    line-height: 1.6;
+  }
+  .info-box strong { font-weight: 700; }
+
+  /* ── CALCULATOR ── */
+  #compensation, #calculator { background: var(--grey-light); }
+  #calculator { padding: 80px 0; }
+
+  .calc-headline { text-align: center; margin-bottom: 48px; }
+  .calc-headline h2 { margin-bottom: 12px; }
+  .calc-headline p { color: var(--grey-text); font-size: 1.05rem; }
+
+  .calc-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid var(--grey-mid);
+  }
+  .calc-card-header {
+    background: var(--dark-text);
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .calc-card-header h3 {
+    color: var(--white);
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+  }
+  .calc-card-header .header-dot {
+    width: 10px; height: 10px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse-dot 2.5s infinite;
+  }
+  .calc-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 720px) {
+    .calc-body { grid-template-columns: 1fr; }
+  }
+
+  .calc-inputs {
+    padding: 32px;
+    border-right: 1px solid var(--grey-light);
+  }
+  @media (max-width: 720px) {
+    .calc-inputs { border-right: none; border-bottom: 1px solid var(--grey-light); }
+  }
+
+  .calc-section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-text);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .calc-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--grey-mid);
+  }
+
+  .form-group { margin-bottom: 20px; }
+  .form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 6px;
+  }
+  .form-hint { font-size: 0.76rem; color: var(--grey-text); margin-top: 4px; display: block; }
+  .form-input, .form-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--grey-mid);
+    border-radius: var(--radius-sm);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem;
+    color: var(--dark-text);
+    background: var(--white);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-select:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(124,193,66,0.15);
+  }
+  .form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6352' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; cursor: pointer; }
+
+  .calc-outputs { padding: 32px; }
+
+  .output-mini-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .output-mini {
+    background: var(--grey-light);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--grey-mid);
+  }
+  .output-mini.arbor-mini { border-top: 3px solid var(--green); }
+  .output-mini.uam-mini   { border-top: 3px solid var(--uam-blue); }
+  .output-mini-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .output-mini.arbor-mini .output-mini-label { color: var(--green-dark); }
+  .output-mini.uam-mini   .output-mini-label { color: var(--uam-blue); }
+  .output-mini-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1;
+  }
+  .output-mini.arbor-mini .output-mini-val { color: var(--green-dark); }
+  .output-mini.uam-mini   .output-mini-val { color: var(--uam-blue); }
+
+  .output-card {
+    background: var(--grey-light);
+    border: 1px solid var(--grey-mid);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .output-card-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--grey-text);
+    line-height: 1.3;
+  }
+  .output-card-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    white-space: nowrap;
+  }
+
+  .output-card-total {
+    background: var(--dark-text);
+    border-radius: var(--radius-sm);
+    padding: 22px 24px;
+    margin-bottom: 0;
+  }
+  .output-card-total .output-card-label { color: rgba(255,255,255,0.7); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; }
+  .output-card-total .total-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    display: block;
+    margin-top: 6px;
+  }
+  .output-card-total .total-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    display: block;
+    margin-top: 6px;
+  }
+
+  .calc-footer-note {
+    padding: 16px 32px;
+    background: var(--green-tint);
+    border-top: 1px solid rgba(124,193,66,0.25);
+    font-size: 0.8rem;
+    color: var(--green-dark);
+    line-height: 1.5;
+  }
+
+  /* ── TECHNOLOGY ── */
+  #technology {
+    background: var(--green-xdark);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  #technology::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 60% at 80% 20%, rgba(124,193,66,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .tech-headline { margin-bottom: 16px; color: var(--white); }
+  .tech-subhead { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 660px; line-height: 1.65; margin-bottom: 52px; }
+  .tech-subhead em { color: rgba(255,255,255,0.85); font-style: normal; }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 580px) { .feature-grid { grid-template-columns: 1fr; } }
+
+  .feature-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-top: 3px solid var(--green);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: all var(--transition);
+  }
+  .feature-card:hover {
+    background: rgba(255,255,255,0.09);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+  .feature-card-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(124,193,66,0.15);
+    border: 1px solid rgba(124,193,66,0.3);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+  .feature-card-icon svg { width: 20px; height: 20px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .feature-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+  .feature-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* tech cost compare */
+  .tech-cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 680px) { .tech-cost-grid { grid-template-columns: 1fr; } }
+
+  .tech-cost-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .tech-cost-header {
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tech-cost-header.arbor { background: rgba(124,193,66,0.15); border-bottom: 2px solid var(--green); }
+  .tech-cost-header.uam   { background: rgba(42,63,126,0.25); border-bottom: 2px solid var(--uam-blue); }
+  .tech-cost-header-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+  }
+  .tech-cost-header.arbor .tech-cost-header-label { color: var(--green); }
+  .tech-cost-header.uam   .tech-cost-header-label { color: #7b94d6; }
+  .tech-cost-total-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .tech-cost-total-label.green { color: var(--green); }
+  .tech-cost-total-label.red   { color: #e57373; }
+
+  .tech-cost-body {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    padding: 8px 0;
+  }
+  .tech-cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.88rem;
+  }
+  .tech-cost-row:last-child { border-bottom: none; }
+  .tech-cost-row .item-name { color: rgba(255,255,255,0.65); }
+  .tech-cost-row .item-val  { font-weight: 600; font-size: 0.85rem; }
+  .item-val.included { color: var(--green); }
+  .item-val.cost     { color: #e57373; }
+  .item-val.note     { color: rgba(255,255,255,0.4); font-style: italic; font-size: 0.8rem; }
+
+  /* ── INFRASTRUCTURE ── */
+  #infrastructure { background: var(--white); padding: 80px 0; }
+
+  .infra-headline { text-align: center; margin-bottom: 56px; }
+  .infra-headline h2 { margin-bottom: 14px; }
+  .infra-headline p { color: var(--grey-text); max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 860px) { .pillars-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+  .pillar-card {
+    background: var(--white);
+    border: 1px solid var(--grey-mid);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+  }
+  .pillar-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--green); }
+  .pillar-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .pillar-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .pillar-desc { font-size: 0.85rem; color: var(--grey-text); line-height: 1.55; }
+
+  /* scorecard table */
+  .scorecard-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--grey-mid);
+  }
+  .scorecard {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .scorecard thead tr {
+    background: var(--dark-text);
+    color: var(--white);
+  }
+  .scorecard thead th {
+    padding: 14px 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .scorecard tbody tr { border-bottom: 1px solid var(--grey-light); transition: background var(--transition); }
+  .scorecard tbody tr:last-child { border-bottom: none; }
+  .scorecard tbody tr:hover { background: var(--green-tint); }
+  .scorecard td { padding: 13px 18px; vertical-align: middle; }
+  .scorecard .row-cat { font-weight: 600; color: var(--dark-text); font-size: 0.88rem; }
+  .dot-val {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-green { background: var(--green); }
+  .dot-red   { background: var(--red); }
+  .dot-blue  { background: var(--uam-blue); }
+  .dot-grey  { background: var(--grey-mid); }
+  .val-green { color: var(--green-dark); font-weight: 600; }
+  .val-red   { color: var(--red); }
+  .val-blue  { color: var(--uam-blue); }
+  .val-grey  { color: var(--grey-text); }
+
+  /* ── CULTURE ── */
+  #culture {
+    background: var(--green-dark);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  #culture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 20% 80%, rgba(15,26,8,0.6) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .culture-headline { text-align: center; margin-bottom: 52px; position: relative; }
+  .culture-headline h2 { color: var(--white); margin-bottom: 14px; }
+  .culture-headline p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  @media (max-width: 680px) { .quotes-grid { grid-template-columns: 1fr; } }
+
+  .quote-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .quote-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--green);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .quote-card:hover {
+    background: rgba(255,255,255,0.11);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .quote-text {
+    font-size: 0.97rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 24px;
+  }
+  .quote-source {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .culture-callout {
+    background: rgba(15,26,8,0.6);
+    border: 1px solid rgba(124,193,66,0.25);
+    border-left: 4px solid var(--green);
+    border-radius: var(--radius);
+    padding: 36px;
+    position: relative;
+  }
+  .culture-callout h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+  .culture-callout p {
+    color: rgba(255,255,255,0.72);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 800px;
+  }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--green);
+    padding: 80px 0;
+    text-align: center;
+  }
+  .cta-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--green-xdark);
+    margin-bottom: 16px;
+    line-height: 1.05;
+  }
+  .cta-sub {
+    font-size: 1.1rem;
+    color: rgba(15,26,8,0.75);
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+  }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 20px; }
+  .cta-fine { font-size: 0.83rem; color: rgba(15,26,8,0.6); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-xdark);
+    padding: 28px 0;
+    text-align: center;
+    border-top: 1px solid rgba(124,193,66,0.15);
+  }
+  .footer-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.06em;
+  }
+  .footer-text span { color: var(--green); }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider { width: 48px; height: 4px; background: var(--green); border-radius: 2px; margin-bottom: 24px; }
+  .section-divider.center { margin-left: auto; margin-right: auto; }
+
+  /* ── Responsive helpers ── */
+  @media (max-width: 480px) {
+    .section { padding: 56px 0; }
+    .hero-buttons { flex-direction: column; }
+    .cta-buttons  { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="Arbor-Financial-Group-2.webp" alt="Arbor Financial Group" style="height:44px;width:auto;display:block;"/>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#transparency">Transparency</a></li>
+      <li><a href="#calculator">Calculator</a></li>
+      <li><a href="#technology">Technology</a></li>
+      <li><a href="#infrastructure">Infrastructure</a></li>
+      <li><a href="#culture">Culture</a></li>
+    </ul>
+
+    <a href="mailto:ryan@arborfinancialgroup.com" class="btn btn-green nav-cta">Let's Talk</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="tag"><span class="tag-dot"></span>Coming Home to Arbor</span>
+      </div>
+
+      <h1 class="hero-headline">
+        ARBOR:<br>
+        <span class="green-line">The Clear Choice.</span>
+      </h1>
+
+      <p class="hero-subhead">
+        Transparency. Pricing. Technology. Support. Future-Proof. Five reasons the math — and the culture — land here.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#calculator" class="btn btn-green">Run My Numbers</a>
+        <a href="#transparency" class="btn btn-outline-white">See the Truth</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">~40 bps</span>
+          <span class="hero-stat-label">Better Pricing vs UAMCO</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4&times;</span>
+          <span class="hero-stat-label">Larger Funding Team</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">0</span>
+          <span class="hero-stat-label">Hidden Holdbacks</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">$175</span>
+          <span class="hero-stat-label">All-In Monthly Tech Fee</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUTH BANNER
+============================================================ -->
+<div id="truth-banner">
+  <div class="container">
+    <div class="truth-items">
+      <div class="truth-item">
+        <span class="truth-check">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="1.5,5 4,7.5 8.5,2" stroke="#7CC142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Transparent Pricing — Always
+      </div>
+      <div class="truth-item">
+        <span class="truth-check">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="1.5,5 4,7.5 8.5,2" stroke="#7CC142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        No Hidden Holdbacks
+      </div>
+      <div class="truth-item">
+        <span class="truth-check">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="1.5,5 4,7.5 8.5,2" stroke="#7CC142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Future-Proof Technology
+      </div>
+      <div class="truth-item">
+        <span class="truth-check">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="1.5,5 4,7.5 8.5,2" stroke="#7CC142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Dedicated Funding Team
+      </div>
+      <div class="truth-item">
+        <span class="truth-check">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="1.5,5 4,7.5 8.5,2" stroke="#7CC142" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Real C-Suite Leadership
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     TRANSPARENCY
+============================================================ -->
+<section id="transparency" class="section">
+  <div class="container">
+    <div class="transparency-headline">
+      <span class="section-label">The Math They Don't Show You</span>
+      <div class="section-divider center"></div>
+      <h2>You Can't Optimize<br>What You Can't See.</h2>
+      <p>UAMCO tells you "100% commission." What they don't tell you is what's already been taken out before you even see the gross price — and how that changes everything.</p>
+    </div>
+
+    <!-- Side-by-side cards -->
+    <div class="compare-cards">
+      <!-- Arbor card -->
+      <div class="compare-card">
+        <div class="compare-card-header arbor">
+          <div>
+            <div class="compare-card-logo-label">Arbor Financial Group</div>
+            <span class="compare-card-sub">90% split — but 90% of what you can see and verify</span>
+          </div>
+        </div>
+        <div class="compare-rows">
+          <div class="compare-row">
+            <span class="compare-row-label">Holdback Visibility</span>
+            <span class="badge badge-green">Shown in PPE ✓</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">Wholesale vs Non-Del</span>
+            <span class="badge badge-green">Side-by-side always ✓</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">Holdback Changes</span>
+            <span class="badge badge-green">Always disclosed ✓</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">LO Can Verify</span>
+            <span class="badge badge-green">Any time, any lender ✓</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">Holdback Range</span>
+            <span class="badge badge-green">0 – 37.5 bps</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- UAMCO card -->
+      <div class="compare-card">
+        <div class="compare-card-header uam">
+          <div>
+            <div class="compare-card-logo-label">United American Mortgage</div>
+            <span class="compare-card-sub">100% split — of a number you can't verify</span>
+          </div>
+        </div>
+        <div class="compare-rows">
+          <div class="compare-row">
+            <span class="compare-row-label">Holdback Visibility</span>
+            <span class="badge badge-red">Hidden from LO</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">Wholesale vs Non-Del</span>
+            <span class="badge badge-red">Not disclosed</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">Holdback Changes</span>
+            <span class="badge badge-red">Without notice</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">LO Can Verify</span>
+            <span class="badge badge-red">No mechanism to verify</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-row-label">Holdback Range</span>
+            <span class="badge badge-red">37.5 – 62.5 bps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Holdback table -->
+    <div class="hb-table-wrap">
+      <table class="hb-table">
+        <thead>
+          <tr>
+            <th>Loan Type</th>
+            <th>Arbor Holdback</th>
+            <th>UAMCO Holdback</th>
+            <th>Arbor Net (90%)</th>
+            <th>UAMCO Net (100%)</th>
+            <th>Arbor Advantage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Agency / Jumbo Incentive</td>
+            <td class="arbor-cell">0 bps</td>
+            <td class="uam-cell">50 bps</td>
+            <td class="arbor-cell">180 bps</td>
+            <td class="uam-cell">150 bps</td>
+            <td class="adv-cell">+30 bps</td>
+          </tr>
+          <tr>
+            <td>Agency / Jumbo Holdback</td>
+            <td class="arbor-cell">12.5 – 25 bps</td>
+            <td class="uam-cell">50 bps</td>
+            <td class="arbor-cell">157 – 169 bps</td>
+            <td class="uam-cell">150 bps</td>
+            <td class="adv-cell">+7 – 19 bps</td>
+          </tr>
+          <tr>
+            <td>Non-QM</td>
+            <td class="arbor-cell">37.5 bps</td>
+            <td class="uam-cell">62.5 bps</td>
+            <td class="arbor-cell">146 bps</td>
+            <td class="uam-cell">137.5 bps</td>
+            <td class="adv-cell">+9 bps</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box">
+      <strong>The pricing study confirms it:</strong> A recent side-by-side comparison found Arbor approximately <strong>40 basis points better on pricing</strong> than UAMCO — this is the holdback advantage made visible in real market conditions. The calculator above reflects this directly in your take-home.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CALCULATOR
+============================================================ -->
+<section id="compensation"></section>
+<section id="calculator">
+  <div class="container">
+    <div class="calc-headline">
+      <span class="section-label">Compensation Reality Check</span>
+      <div class="section-divider center"></div>
+      <h2>100% Commission.<br><span class="green-line" style="font-size:inherit;">100% of What?</span></h2>
+      <p>UAMCO's "100%" sounds great until you see what's already gone before you get it. Input your actual production and let the math answer the question.</p>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-card-header">
+        <span class="header-dot"></span>
+        <h3>Compensation Reality Calculator</h3>
+      </div>
+
+      <div class="calc-body">
+        <!-- INPUTS -->
+        <div class="calc-inputs">
+          <div class="calc-section-title">Your Production Profile</div>
+
+          <div class="form-group">
+            <label class="form-label" for="loanAmt">Average Loan Amount ($)</label>
+            <input class="form-input" type="number" id="loanAmt" value="750000" min="100000" max="10000000" step="50000" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loansPerMonth">Loans Per Month</label>
+            <input class="form-input" type="number" id="loansPerMonth" value="8" min="1" max="50" step="1" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="grossBps">Gross Price (bps)</label>
+            <input class="form-input" type="number" id="grossBps" value="200" min="50" max="400" step="5" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loanType">Primary Loan Type</label>
+            <select class="form-select" id="loanType">
+              <option value="agency">Agency / Jumbo Incentive (0 bps holdback)</option>
+              <option value="nonagenqm">Agency / Jumbo Holdback (12.5–25 bps)</option>
+              <option value="nonqm">Non-QM (37.5 bps holdback)</option>
+              <option value="mixed">Mixed Book</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="arborSplit">Arbor Split Tier</label>
+            <select class="form-select" id="arborSplit">
+              <option value="0.90">90% — Top Producer</option>
+              <option value="0.85">85%</option>
+              <option value="0.80">80%</option>
+              <option value="0.75">75%</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="techCost">Monthly Tech Cost at UAMCO ($)</label>
+            <input class="form-input" type="number" id="techCost" value="1000" min="0" max="5000" step="50" />
+            <span class="form-hint">CRM + tools out-of-pocket, est. $800–$1,200/mo. Arbor is $175/mo all-in — EIOS, Arive, everything.</span>
+          </div>
+        </div>
+
+        <!-- OUTPUTS -->
+        <div class="calc-outputs">
+          <div class="calc-section-title">Your Real Take-Home Comparison</div>
+
+          <div class="output-mini-row">
+            <div class="output-mini arbor-mini">
+              <span class="output-mini-label">Arbor / Loan</span>
+              <span class="output-mini-val" id="out-arbor-per-loan">—</span>
+            </div>
+            <div class="output-mini uam-mini">
+              <span class="output-mini-label">UAMCO / Loan</span>
+              <span class="output-mini-val" id="out-uam-per-loan">—</span>
+            </div>
+          </div>
+
+          <div class="output-card">
+            <div class="output-card-label">Comp Advantage Per Loan</div>
+            <div class="output-card-val" id="out-per-loan-adv">—</div>
+          </div>
+
+          <div class="output-card">
+            <div class="output-card-label">Annual Comp Advantage</div>
+            <div class="output-card-val" id="out-annual-comp">—</div>
+          </div>
+
+          <div class="output-card">
+            <div class="output-card-label">Annual Tech Savings<br><span style="font-size:0.76rem;color:var(--grey-text);font-weight:400;">Arbor $175/mo vs UAMCO out-of-pocket</span></div>
+            <div class="output-card-val" id="out-tech-sav">—</div>
+          </div>
+
+          <div class="output-card output-card-total">
+            <div>
+              <div class="output-card-label">TOTAL Annual Advantage</div>
+              <span class="total-headline" id="out-total">—</span>
+              <span class="total-sub" id="out-total-sub">vs staying at UAMCO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-footer-note">
+        Numbers update live. Based on published holdback structures — the same ~40 bps advantage confirmed in a recent pricing study. All figures are illustrative and based on the inputs you provide.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TECHNOLOGY
+============================================================ -->
+<section id="technology">
+  <div class="container" style="position:relative;z-index:1;">
+    <span class="section-label">Built In-House. Owned by Arbor.</span>
+    <div class="section-divider" style="background:var(--green);margin-bottom:20px;"></div>
+    <h2 class="tech-headline">EIOS: The Mortgage<br>Command Center.</h2>
+    <p class="tech-subhead">
+      UAMCO tells LOs they don't need a CRM — then leaves them to pay $800–$1,200/month cobbling together tools that don't talk to each other. <em>Arbor built EIOS. We own it. You use it. $175/month, all-in.</em>
+    </p>
+
+    <div class="feature-grid">
+
+      <!-- Card 1 -->
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        </div>
+        <h4>Database Machine</h4>
+        <p>LOS is the single source of truth. Real-time sync across every module — no fragmentation, no duplicate entry, no data rot between disconnected systems.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h4>Marketing Machine</h4>
+        <p>Live AVM values, credit monitoring, automated refi triggers, birthday and anniversary campaigns — running in the background, working while you're closing.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h4>Communication Machine</h4>
+        <p>Bulk email to lender reps and realtor groups, smart templates, video integration, and full tracking. One platform, not five browser tabs.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h4>AI Machine</h4>
+        <p>Document labeling, stare-and-compare condition clearing, refi pipeline analysis, and Arlo — our AI sidecar that surfaces insights before you think to ask.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h4>Fully Integrated Stack</h4>
+        <p>EIOS connects to Arive (POS/LOS/PPE), email tracking, and every data signal — seamlessly. What you see in one place is live everywhere.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <h4>Future-Ready Foundation</h4>
+        <p>Every tool we build next — and every integration we add — builds on EIOS. You're not a customer of our tech stack. You're a stakeholder in it.</p>
+      </div>
+
+    </div>
+
+    <!-- Tech cost comparison -->
+    <div class="tech-cost-grid">
+      <!-- Arbor -->
+      <div class="tech-cost-card">
+        <div class="tech-cost-header arbor">
+          <span class="tech-cost-header-label">Arbor Financial Group</span>
+          <span class="tech-cost-total-label green">$175/mo All-In</span>
+        </div>
+        <div class="tech-cost-body">
+          <div class="tech-cost-row"><span class="item-name">EIOS (full platform)</span><span class="item-val included">Included</span></div>
+          <div class="tech-cost-row"><span class="item-name">Arive (POS/LOS/PPE)</span><span class="item-val included">Included</span></div>
+          <div class="tech-cost-row"><span class="item-name">Arive PPE (pricing engine)</span><span class="item-val included">Included</span></div>
+          <div class="tech-cost-row"><span class="item-name">Database &amp; data signals</span><span class="item-val included">Included</span></div>
+          <div class="tech-cost-row"><span class="item-name">Marketing team access</span><span class="item-val included">Included</span></div>
+          <div class="tech-cost-row"><span class="item-name">AI tools (Arlo + pipeline)</span><span class="item-val included">Included</span></div>
+        </div>
+      </div>
+
+      <!-- UAMCO -->
+      <div class="tech-cost-card">
+        <div class="tech-cost-header uam">
+          <span class="tech-cost-header-label">United American Mortgage</span>
+          <span class="tech-cost-total-label red">$800–$1,200 / mo</span>
+        </div>
+        <div class="tech-cost-body">
+          <div class="tech-cost-row"><span class="item-name">CRM (your cost)</span><span class="item-val cost">$150–$300/mo</span></div>
+          <div class="tech-cost-row"><span class="item-name">Database signaling</span><span class="item-val cost">$200–$400/mo</span></div>
+          <div class="tech-cost-row"><span class="item-name">Email marketing platform</span><span class="item-val cost">$100–$200/mo</span></div>
+          <div class="tech-cost-row"><span class="item-name">Video / social tools</span><span class="item-val cost">$50–$100/mo</span></div>
+          <div class="tech-cost-row"><span class="item-name">Integrations &amp; zapier</span><span class="item-val cost">$100–$200/mo</span></div>
+          <div class="tech-cost-row"><span class="item-name">Time lost managing 5 systems</span><span class="item-val note">Priceless (bad)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INFRASTRUCTURE
+============================================================ -->
+<section id="infrastructure" class="section">
+  <div class="container">
+    <div class="infra-headline">
+      <span class="section-label">Scale and Support</span>
+      <div class="section-divider center"></div>
+      <h2>The People and Systems<br>That Don't Bottleneck You.</h2>
+      <p>When rates drop and 850 refi opportunities hit your pipeline, infrastructure either performs or it fails. Ours is built to scale with you.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <span class="pillar-num">4&times;</span>
+        <span class="pillar-title">Funding Team vs UAMCO</span>
+        <p class="pillar-desc">Our funding team is four times the size of UAMCO's — meaning we have the resources right now. Files don't queue. Closings don't slip.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">48</span>
+        <span class="pillar-title">States + Licensing Team</span>
+        <p class="pillar-desc">Licensed in 48 states with a dedicated team managing compliance so you can originate anywhere without the admin burden.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">5+</span>
+        <span class="pillar-title">Real Leadership Depth</span>
+        <p class="pillar-desc">Two Co-CEOs, an SMD of Production, plus a dedicated CFO, COO, and CTO. Strategy, operations, and technology all have a named leader — and they're reachable.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">162</span>
+        <span class="pillar-title">Lenders in EIOS by Niche</span>
+        <p class="pillar-desc">162 lenders organized by niche inside EIOS. Search, email, call, and read reviews — all from one place. You can't lock in-system, but you can find the right lender in seconds.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">0</span>
+        <span class="pillar-title">Pay-to-Play Culture</span>
+        <p class="pillar-desc">No bribing to move files. It's unnecessary here — and where it exists, it creates a culture nightmare. Files move because ops is staffed and the system works, full stop.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">&#10003;</span>
+        <span class="pillar-title">Dedicated Marketing Team</span>
+        <p class="pillar-desc">In-house marketing team building campaigns, content, and collateral on behalf of the platform — not an add-on you pay for separately.</p>
+      </div>
+    </div>
+
+    <!-- Scorecard -->
+    <div class="scorecard-wrap">
+      <table class="scorecard">
+        <thead>
+          <tr>
+            <th style="width:28%;">Category</th>
+            <th style="width:36%;">
+              <svg width="14" height="14" viewBox="0 0 36 36" style="vertical-align:middle;margin-right:6px;"><circle cx="18" cy="18" r="18" fill="#3d6420"/><polygon points="18,8 28,24 8,24" fill="#7CC142"/><rect x="15.5" y="24" width="5" height="5" fill="#0f1a08"/></svg>
+              Arbor Financial
+            </th>
+            <th style="width:36%;">
+              <svg width="12" height="12" viewBox="0 0 12 12" style="vertical-align:middle;margin-right:6px;"><circle cx="6" cy="6" r="6" fill="#2a3f7e"/></svg>
+              UAMCO
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-cat">Pricing Transparency</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">Full — shown in PPE</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-red"></span><span class="val-red">Hidden from LO</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">Holdbacks — Agency</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">0 bps</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-red"></span><span class="val-red">50 bps</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">Holdbacks — Non-QM</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">37.5 bps</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-red"></span><span class="val-red">62.5 bps</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">Net LO Earnings (Agency, 200 bps)</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">180 bps (90% split)</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-red"></span><span class="val-red">150 bps (100% split)</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">Pricing Advantage vs UAMCO</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">~40 bps better</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-grey"></span><span class="val-grey">Baseline</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">CRM / Tech Cost to LO</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">$175/mo — everything included</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-red"></span><span class="val-red">$800–$1,200/mo</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">Funding Team</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">4× scaled for volume</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-blue"></span><span class="val-blue">Standard sizing</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">C-Suite Leadership</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">2 Co-CEOs, SMD Production, CFO, COO, CTO</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-red"></span><span class="val-red">Solo CEO + 1 ops manager</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">State Licensing</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">48 states w/ team</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-grey"></span><span class="val-grey">Varies</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">Marketing Support</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">In-house dedicated team</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-red"></span><span class="val-red">LO self-funded</span></div></td>
+          </tr>
+          <tr>
+            <td class="row-cat">AI Investment</td>
+            <td><div class="dot-val"><span class="dot dot-green"></span><span class="val-green">Active — Arlo + pipeline AI</span></div></td>
+            <td><div class="dot-val"><span class="dot dot-grey"></span><span class="val-grey">No known roadmap</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CULTURE
+============================================================ -->
+<section id="culture">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="culture-headline">
+      <span class="section-label" style="color:var(--green);">Who We Are</span>
+      <div class="section-divider center" style="background:var(--green);"></div>
+      <h2>A Collective of Originators.<br>Getting Better Together.</h2>
+      <p>Culture at Arbor isn't something that gets announced. It shows up in how people actually behave when things get hard.</p>
+    </div>
+
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <p class="quote-text">Post a scenario to the LO channel and you'll get 7–8 responses within minutes. And it's always our top producers who jump in first — because they actually want everyone to win.</p>
+        <div class="quote-source">The Arbor Brain Trust</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">We work with our friends. We treat them that way. That sense of caring about each other — it's not something you can manufacture. It's who we are.</p>
+        <div class="quote-source">Arbor Culture</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">When rates move, EIOS already knows who's ready to refinance. Data signals surface the opportunities, pricing is live in the PPE, and proposals go out from the same platform. Ops is staffed to close it. The machine is already running — you just pull the trigger.</p>
+        <div class="quote-source">Operational Readiness — Powered by EIOS</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">The investment we make in technology isn't overhead — it's return. What we build goes to work for every LO on the platform. That's how a collective grows.</p>
+        <div class="quote-source">Technology Philosophy</div>
+      </div>
+    </div>
+
+    <div class="culture-callout">
+      <h3>The Freedom to Focus on What You Do Best.</h3>
+      <p>All of this — EIOS, Arive, the marketing team, the funding team, the AI, the C-suite, the culture — exists for one reason: to free you up to have more conversations, create more opportunities, and close more loans. Not to manage software. Not to chase down your own data. Not to wonder what holdback just changed on the pricing sheet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+============================================================ -->
+<section id="cta">
+  <div class="container">
+    <h2 class="cta-headline">Still Have Questions? We Have Answers.</h2>
+    <p class="cta-sub">You've seen the math, the platform, the people. We want you here — and we're happy to walk through any of it live, side by side, with real numbers on your actual volume.</p>
+
+    <div class="cta-buttons">
+      <a href="#calculator" class="btn btn-white">Run My Numbers Again</a>
+      <a href="mailto:ryan@arborfinancialgroup.com?subject=Live%20Comparison%20%E2%80%94%20Arbor" class="btn btn-outline-green-on-green">Want More Proof? Let's Do a Live Comparison</a>
+    </div>
+
+    <p class="cta-fine">No pressure. Real pricing. Your numbers, your volume — live side-by-side in Arive.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="container">
+    <p class="footer-text">Arbor Financial Group &nbsp;·&nbsp; <span>Transparent. Invested. Yours.</span> &nbsp;·&nbsp; eios.io</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT — CALCULATOR
+============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  const HOLDBACKS = {
+    agency:    { arbor: 0,      uam: 50   },
+    nonagenqm: { arbor: 18.75,  uam: 50   },
+    nonqm:     { arbor: 37.5,   uam: 62.5 },
+    mixed:     { arbor: 12.5,   uam: 51.5 }
+  };
+
+  function fmtDollar(n) {
+    if (Math.abs(n) >= 1_000_000) {
+      return '$' + (n / 1_000_000).toFixed(2) + 'M';
+    }
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function fmtBps(n) {
+    return n.toFixed(1) + ' bps';
+  }
+
+  function getNum(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
+  }
+
+  function calc() {
+    const loanAmt      = getNum('loanAmt');
+    const loansPerMonth = getNum('loansPerMonth');
+    const grossBps     = getNum('grossBps');
+    const loanType     = document.getElementById('loanType').value;
+    const arborSplit   = parseFloat(document.getElementById('arborSplit').value) || 0.90;
+    const techCost     = getNum('techCost');
+
+    const hb = HOLDBACKS[loanType] || HOLDBACKS.agency;
+
+    const arborBps   = (grossBps - hb.arbor) * arborSplit;
+    const uamBps     = (grossBps - hb.uam)   * 1.0;
+
+    const arborPerLoan = loanAmt * arborBps / 10000;
+    const uamPerLoan   = loanAmt * uamBps   / 10000;
+    const perLoanAdv   = arborPerLoan - uamPerLoan;
+
+    const annualCompAdv = perLoanAdv * loansPerMonth * 12;
+    const annualTechSav = (techCost - 175) * 12;
+    const totalAnnual   = annualCompAdv + annualTechSav;
+
+    // write outputs
+    document.getElementById('out-arbor-per-loan').textContent = fmtDollar(arborPerLoan);
+    document.getElementById('out-uam-per-loan').textContent   = fmtDollar(uamPerLoan);
+
+    const advEl = document.getElementById('out-per-loan-adv');
+    advEl.textContent = (perLoanAdv >= 0 ? '+' : '') + fmtDollar(perLoanAdv);
+    advEl.style.color = perLoanAdv >= 0 ? 'var(--green-dark)' : 'var(--red)';
+
+    const annCompEl = document.getElementById('out-annual-comp');
+    annCompEl.textContent = (annualCompAdv >= 0 ? '+' : '') + fmtDollar(annualCompAdv);
+    annCompEl.style.color = annualCompAdv >= 0 ? 'var(--green-dark)' : 'var(--red)';
+
+    document.getElementById('out-tech-sav').textContent = '+' + fmtDollar(annualTechSav);
+
+    const totalEl = document.getElementById('out-total');
+    totalEl.textContent = (totalAnnual >= 0 ? '+' : '') + fmtDollar(totalAnnual);
+    totalEl.style.color = totalAnnual >= 0 ? 'var(--green)' : '#e57373';
+
+    document.getElementById('out-total-sub').textContent =
+      'vs staying at UAMCO · ' +
+      fmtBps(arborBps) + ' Arbor net vs ' +
+      fmtBps(uamBps) + ' UAMCO net';
+  }
+
+  // Wire all inputs
+  ['loanAmt','loansPerMonth','grossBps','loanType','arborSplit','techCost']
+    .forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', calc);
+        el.addEventListener('change', calc);
+      }
+    });
+
+  // Run on load
+  calc();
+})();
+</script>
+
+</body>
+</html>
